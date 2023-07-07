@@ -4,17 +4,23 @@
  */
 package rugbyteamca;
 
+import menu.Interface;
+import printer.Printer;
+import printer.PrinterConsole;
+import view.Menu;
+
 /**
  *
  * @author renan
  */
 public class RugbyTeamCA {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        System.out.println("teste");
+    public static void main(String[] args) throws Exception {
+        RugbyClub rugbyClub = new RugbyClub();
+        rugbyClub.execute();
+
+        Printer printer = new PrinterConsole();
+        Menu menu = new Interface(printer, rugbyClub);
+        menu.render();
     }
-    
 }
