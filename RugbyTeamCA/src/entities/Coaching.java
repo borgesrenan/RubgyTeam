@@ -30,13 +30,13 @@ public class Coaching extends Staffs {
 
     private static void initializeStaff(Coaching staff, StaffType type, int level) {
         staff.name = NameGenerator.generate();
-        staff.number = UUID.randomUUID().toString();
+        staff.number = UUID.randomUUID().toString(); // This line assigns a randomly generated unique identifier (UUID) to the number property of the staff object. The UUID.randomUUID().toString() method generates a new UUID as a string.
         staff.type = type;
         staff.level = level;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\tLevel = " + level + System.lineSeparator();
+        return super.toString() + "\tLEVEL = " + level + System.lineSeparator();
     }
 }
