@@ -9,7 +9,6 @@ package entities;
  * @author renan
  */
 public enum Sector {
-    CLUB,
-    COACHING;
+    CLUB, COACHING;
 }
 

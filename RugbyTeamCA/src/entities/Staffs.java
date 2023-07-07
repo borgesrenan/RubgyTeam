@@ -28,17 +28,14 @@ public class Staffs {
 
     @Override
     public String toString() {
-        String lineSeparator = System.getProperty("line.separator");
-        StringBuilder sb = new StringBuilder();
-        sb.append("STAFF:").append(lineSeparator);
-        sb.append("\tNAME = ").append(name).append(lineSeparator);
-        sb.append("\tNUMBER = ").append(number).append(lineSeparator);
-        sb.append("\tTYPE = ").append(type.getName()).append(lineSeparator);
-        return sb.toString();
+        return "STAFF:\n"
+                + "\tNAME = " + name + "\n"
+                + "\tNUMBER = " + number + "\n"
+                + "\tTYPE = " + type.getName() + "\n";
     }
 
-    protected static StaffType getRandomType(final Sector sector) {
-        final List<StaffType> values = StaffType.listBySector(sector);
+    protected static StaffType getRandomType(Sector sector) {
+        List<StaffType> values = StaffType.listBySector(sector);
         Random random = new Random();
         return values.get(random.nextInt(values.size()));
     }
