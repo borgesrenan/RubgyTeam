@@ -82,6 +82,28 @@ public enum StaffType {
         public Sector getSector() {
             return Sector.COACHING;
         }
+    },
+    NUTRITIONIST(7) {
+        @Override
+        public String getName() {
+            return "NUTRITIONIST";
+        }
+
+        @Override
+        public Sector getSector() {
+            return Sector.CLUB;
+        }
+    },
+    PHYSIOTHERAPIST(8) {
+        @Override
+        public String getName() {
+            return "PHYSIOTHERAPIST";
+        }
+
+        @Override
+        public Sector getSector() {
+            return Sector.CLUB;
+        }
     };
 
     private final int id;

@@ -61,7 +61,7 @@ public class Interface implements Menu {
 
     private int handleUserInput(String option) {
         if (!validNumberInput(option)) {
-            printer.print("Invalid option");
+            printer.print("INVALID OPTION!");
             return 0;
         }
 
