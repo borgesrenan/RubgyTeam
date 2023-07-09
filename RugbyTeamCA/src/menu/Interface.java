@@ -34,11 +34,11 @@ public class Interface implements Menu {
         int chosenOption = 0;
         Scanner scanner = new Scanner(System.in);
 
-        while (chosenOption != 10) {
+        while (chosenOption != 7) {
             renderMenuOptions();
             chosenOption = handleUserInput(scanner.nextLine());
 
-            if (chosenOption != 10) {
+            if (chosenOption != 7) {
                 waitUntilUserPressEnter(scanner);
             }
         }
@@ -56,7 +56,7 @@ public class Interface implements Menu {
         printer.print("5 - LIST PLAYERS");
         printer.print("6 - LIST PLAYERS BY GROUP");
         printer.print("7 - LIST PLAYERS BY COACH");
-        printer.print("10 - QUIT");
+        printer.print("0 - EXIT");
     }
 
     private int handleUserInput(String option) {
@@ -66,6 +66,12 @@ public class Interface implements Menu {
         }
 
         int chosenOption = Integer.parseInt(option);
+
+        if (chosenOption == 0) {
+            printer.print("EXITING THE PROGRAM...");
+            System.exit(0);
+        }
+
         takeActionBasedOnUserChoice(chosenOption);
         return chosenOption;
     }
@@ -82,7 +88,7 @@ public class Interface implements Menu {
                 printGroup(rugbyClub.listAllGroups());
                 break;
             case 4:
-                handleGroupByWeekDay();
+                handleGroupsByWeekdaySelection();
                 break;
             case 5:
                 printPlayer(rugbyClub.listAllPlayers());
@@ -93,7 +99,7 @@ public class Interface implements Menu {
             case 7:
                 handlePlayersByCoach();
                 break;
-            case 10:
+            case 0:
                 break;
             default:
                 printer.print("INVALID OPTION!");
@@ -133,7 +139,7 @@ public class Interface implements Menu {
         groups.forEach(group -> printer.print(group.toString()));
     }
 
-    private void handleGroupByWeekDay() {
+    private void handleGroupsByWeekdaySelection() {
         printer.print("PLEASE, PICK ONE DAY OF THE WEEK");
         printer.print("1 - SUNDAY");
         printer.print("2 - MONDAY");
@@ -165,6 +171,10 @@ public class Interface implements Menu {
         players.forEach(player -> printer.print(player.toString()));
     }
 
+    /* This method allows the user to select a group, displays the group
+        details, prompts for a group ID, retrieves the group and print the 
+        players associated. 
+     */
     private void handlePlayersByGroup() {
         printer.print("PLEASE PICK A GROUP");
         List<GroupTraining> groups = rugbyClub.listAllGroups();
@@ -202,8 +212,6 @@ public class Interface implements Menu {
             printer.print((i + 1) + " - " + staff.getName() + " - " + staff.getType());
         }
 
-        printer.print("0 - Return to Main Menu");
-
         Scanner scanner = new Scanner(System.in);
         String option = scanner.nextLine();
 
@@ -215,7 +223,7 @@ public class Interface implements Menu {
         int selectedIndex = Integer.parseInt(option);
 
         if (selectedIndex == 0) {
-            // Voltar ao menu principal
+            waitUntilUserPressEnter(scanner);
             return;
         }
 
@@ -227,6 +235,9 @@ public class Interface implements Menu {
         Staffs staff = staffs.get(selectedIndex - 1);
         printer.print(staff.toString());
         printPlayer(rugbyClub.listAllPlayersByCoach(staff));
+
+        waitUntilUserPressEnter(scanner);
+
     }
 
     private boolean validNumberInput(String input) {

@@ -19,10 +19,7 @@ public class NameGenerator {
     private static final String[] firstNames = {"Seamus", "Aoife", "Ciaran", "Fiona", "Declan", "Niamh", "Ronan", "Eoin", "Orlaith", "Padraig", "Sinead", "Tadhg", "Grainne", "Darragh", "Maeve", "Liam", "Ciara", "Sean"};
     private static final String[] surnames = {"O'Brien", "Murphy", "Kelly", "Doherty", "Byrne", "Gallagher", "Ryan", "Quinn", "Duffy", "O'Sullivan", "Fitzgerald", "Doyle", "Reilly", "Kennedy", "McCarthy", "Walsh", "O'Connor", "O'Neill"};
 
-    /**
-     * Generates random names
-     *
-     * @return names as a string
+    /* method to generate names
      */
     public static String generate() {
         Random r = new Random();
